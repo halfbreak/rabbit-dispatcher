@@ -67,20 +67,6 @@ public class RabbitConsumer {
 
                 channel.basicConsume(RabbitConfig.queueName, true, deliverCallback, consumerTag -> {
                 });
-
-//                while (channel.messageCount(RabbitConfig.queueName) > 0) {
-//                    LOGGER.info("Consuming... Queue still has {} messages", channel.messageCount(RabbitConfig.queueName));
-//                    channel.basicConsume(RabbitConfig.queueName, true, deliverCallback, consumerTag -> {
-//                    });
-//                    Thread.sleep(30);
-//
-//                    if (!connection.isOpen()) {
-//                        connection = connectionFactory.newConnection();
-//                    }
-//                    if (!channel.isOpen()) {
-//                        channel = connection.createChannel();
-//                    }
-//                }
             } catch (IOException | TimeoutException e) { // | InterruptedException
                 LOGGER.error("Error consuming messages.", e);
             }
